@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="cb_wave">
+    <!--波纹的颜色-->
+    <item name="android:colorControlHighlight">@color/colorPrimary</item>
+    <!--选中的颜色-->
+    <item name="colorAccent">@color/colorItem</item>
+  </style>
+</resources>
