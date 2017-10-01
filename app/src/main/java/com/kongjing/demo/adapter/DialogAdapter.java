@@ -1,4 +1,4 @@
-package com.kongjing.multilevelmenu;
+package com.kongjing.demo.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -7,21 +7,24 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.kongjing.multilevelmenu.R;
 import java.util.List;
-import treelist.Node;
-import treelist.TreeListViewAdapter;
+import xyz.kongjing.treelist.Node;
+import xyz.kongjing.treelist.TreeListViewAdapter;
 
 /**
- * Created by zhangke on 2017-1-14.
+ * 主界面的dialog适配器界面
+ * Created by Jing on 17/3/8.
  */
-public class SimpleTreeAdapter extends TreeListViewAdapter
-{
-    public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas, int defaultExpandLevel, int iconExpand, int iconNoExpand) {
+
+public class DialogAdapter extends TreeListViewAdapter {
+
+    public DialogAdapter(ListView mTree, Context context, List<Node> datas, int defaultExpandLevel, int iconExpand, int iconNoExpand) {
         super(mTree, context, datas, defaultExpandLevel, iconExpand, iconNoExpand);
     }
 
-    public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas,
-                             int defaultExpandLevel) {
+    public DialogAdapter(ListView mTree, Context context, List<Node> datas,
+        int defaultExpandLevel) {
         super(mTree, context, datas, defaultExpandLevel);
     }
 
@@ -29,14 +32,14 @@ public class SimpleTreeAdapter extends TreeListViewAdapter
     public View getConvertView(final Node node , int position, View convertView, ViewGroup parent)
     {
 
-       final ViewHolder viewHolder ;
+        final ViewHolder viewHolder ;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item, parent, false);
+            convertView = mInflater.inflate(R.layout.item_tree_multimenu, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.cb = (CheckBox) convertView
-                    .findViewById(R.id.cb_select_tree);
+                .findViewById(R.id.cb_select_tree);
             viewHolder.label = (TextView) convertView
-                    .findViewById(R.id.id_treenode_label);
+                .findViewById(R.id.id_treenode_label);
             viewHolder.icon = (ImageView) convertView.findViewById(R.id.icon);
             convertView.setTag(viewHolder);
 
@@ -74,5 +77,4 @@ public class SimpleTreeAdapter extends TreeListViewAdapter
         CheckBox cb;
         TextView label;
     }
-
 }

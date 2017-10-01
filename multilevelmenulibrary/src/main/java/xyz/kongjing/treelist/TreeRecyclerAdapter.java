@@ -1,10 +1,9 @@
-package treelist;
+package xyz.kongjing.treelist;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
 

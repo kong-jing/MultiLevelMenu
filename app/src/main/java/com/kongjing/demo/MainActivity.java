@@ -1,12 +1,15 @@
-package com.kongjing.multilevelmenu;
+package com.kongjing.demo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import com.kongjing.multilevelmenu.R;
 import java.util.ArrayList;
 import java.util.List;
-import treelist.Node;
-import treelist.TreeListViewAdapter;
+import xyz.kongjing.treelist.Node;
+import xyz.kongjing.treelist.TreeListViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new SimpleTreeAdapter(mTree, this,
             mDatas, 0,R.mipmap.tree_ex,R.mipmap.tree_ec);
         mTree.setAdapter(mAdapter);
+        findViewById(R.id.btnMainDialog).setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, DialogActivity.class));
+            }
+        });
     }
 
     private void initDatas()

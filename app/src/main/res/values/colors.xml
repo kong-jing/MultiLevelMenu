@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorItem">#17181c</color>
+
+    <!--iOS字体颜色-->
+    <color name="textColor_iOS">#007aff</color>
 </resources>

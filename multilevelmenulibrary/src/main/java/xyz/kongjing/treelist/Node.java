@@ -1,4 +1,4 @@
-package treelist;
+package xyz.kongjing.treelist;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package treelist;
+package xyz.kongjing.treelist;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * @param
