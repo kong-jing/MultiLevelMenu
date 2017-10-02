@@ -9,6 +9,9 @@ Multi-Level Menu 多级菜单
 
 使用[DialogPlus](http://blog.csdn.net/ss1168805219/article/details/54954427#属性方法)
 
+使用
+
+``mTreeDatas.add(new Node("id", "parentId",new bean()));``
 
 
 License
