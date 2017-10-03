@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import xyz.kongjing.treelist.Node;
 
+/**
+ * 对话框形式的菜单
+ * @author Jing 
+ */
 public class DialogActivity extends AppCompatActivity {
   private static final String TAG = "DialogActivity";
 
@@ -27,7 +31,7 @@ public class DialogActivity extends AppCompatActivity {
   protected List<Node> mTreeDatas = new ArrayList<Node>();//树形菜单数据集合
   DialogPlus dialog;//对话框
   DialogAdapter mDialogAdapter;//对话框中的树形多级菜单适配器
-  HospitalBean hospitalData ;
+  HospitalBean hospitalData;
   DepartmentBean departmentData;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +63,10 @@ public class DialogActivity extends AppCompatActivity {
             //如果不需要刻意直接用 mDatas既可
             final List<Node> allNodes = mDialogAdapter.getAllNodes();
             for (int i = 0; i < allNodes.size(); i++) {
-              if (allNodes.get(i).isChecked()){
+              if (allNodes.get(i).isChecked()) {
                 if (allNodes.get(i).bean != null) {
                   DepartmentBean.DataBean dataBean = (DepartmentBean.DataBean) allNodes.get(i).bean;
-                  sb.append(dataBean.getName()+",");
+                  sb.append(dataBean.getName() + ",");
                   sbLibId.append(dataBean.getId() + ",");
                 }
               }
@@ -80,8 +84,9 @@ public class DialogActivity extends AppCompatActivity {
         });
         //初始化dialog上的这个listview的适配器
         //第一个参数  ListView, 第二个参数  上下文,第三个参数  数据集, 第四个参数  默认展开层级数 0为不展开,第五个参数  展开的图标,第六个参数  闭合的图标
-        mDialogAdapter = new DialogAdapter(listView, DialogActivity.this,
-            mTreeDatas, 0, R.mipmap.tree_ex,R.mipmap.tree_ec);
+        mDialogAdapter =
+            new DialogAdapter(listView, DialogActivity.this, mTreeDatas, 0, R.mipmap.tree_ex,
+                R.mipmap.tree_ec);
         listView.setAdapter(mDialogAdapter);//绑定适配器
       }
     });
@@ -105,32 +110,33 @@ public class DialogActivity extends AppCompatActivity {
     int n = 0, m = 0;
     mTreeDatas.add(new Node("0", "", "数据源"));//加载主节点
     for (int i = 0; i < hospitalData.getData().size(); i++) {
-      mTreeDatas.add(new Node(++n+"", "0", hospitalData.getData().get(i).getName()));//加载区域节点
-      Log.e(TAG, "initTreeDatas: " + "id = " + n+ " ; pid= "+ " " + "内容："+ hospitalData.getData().get(i).getName());
+      mTreeDatas.add(new Node(++n + "", "0", hospitalData.getData().get(i).getName()));//加载医院节点
+      Log.e(TAG, "initTreeDatas: " + "id = " + n + " ; pid= " + " " + "内容：" + hospitalData.getData()
+          .get(i)
+          .getName());
       String libid = hospitalData.getData().get(i).getId() + "";
       List<DepartmentBean.DataBean> dataBeans = findSourceName(libid, departmentData);
       if (dataBeans.size() > 0) {
         m = n;
-        for (int j = 0; j < dataBeans.size(); j++) {//加载支节点
-          mTreeDatas.add(new Node(++m+"", n+"", dataBeans.get(j).getName(), dataBeans.get(j)));
-          Log.e(TAG, "initTreeDatas: " + "id = " + m + "; pid= "+ n + "内容 :"+dataBeans.get(j).getName());
+        for (int j = 0; j < dataBeans.size(); j++) {//加载科室节点
+          mTreeDatas.add(new Node(++m + "", n + "", dataBeans.get(j).getName(), dataBeans.get(j)));
+          Log.e(TAG, "initTreeDatas: " + "id = " + m + "; pid= " + n + "内容 :" + dataBeans.get(j)
+              .getName());
         }
         n = n + dataBeans.size();
-      }else {
+      } else {
         //n ++;
       }
-
     }
   }
 
-  private List<DepartmentBean.DataBean> findSourceName(String id, DepartmentBean departmentData){
+  private List<DepartmentBean.DataBean> findSourceName(String id, DepartmentBean departmentData) {
     List<DepartmentBean.DataBean> dataBeans = new ArrayList<>();
-    for (int i = 0;i < departmentData.getData().size();i ++){
+    for (int i = 0; i < departmentData.getData().size(); i++) {
       if (departmentData.getData().get(i).getDepartment() == id) {
         dataBeans.add(departmentData.getData().get(i));
       }
     }
     return dataBeans;
   }
-
 }
