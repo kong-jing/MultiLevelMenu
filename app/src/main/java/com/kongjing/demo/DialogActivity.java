@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.google.gson.Gson;
 import com.kongjing.demo.adapter.DialogAdapter;
 import com.kongjing.demo.data.bean.DepartmentBean;
@@ -33,12 +34,14 @@ public class DialogActivity extends AppCompatActivity {
   DialogAdapter mDialogAdapter;//对话框中的树形多级菜单适配器
   HospitalBean hospitalData;
   DepartmentBean departmentData;
+  TextView textView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_dialog);
     initData();
     btnDialog = (Button) findViewById(R.id.btn_Dialog);
+    textView = (TextView) findViewById(R.id.textView);
     btnDialog.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         //想在这里打开一个底部对话框,能够进行树形菜单的选择
@@ -73,7 +76,7 @@ public class DialogActivity extends AppCompatActivity {
             }
             sbLibId.toString();
             String strNodesName = sb.toString();
-            btnDialog.setText(strNodesName);
+            textView.setText(strNodesName+"");
             dialog.dismiss();
           }
         });
@@ -130,10 +133,16 @@ public class DialogActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * 寻找数据
+   * @param id
+   * @param departmentData
+   * @return
+   */
   private List<DepartmentBean.DataBean> findSourceName(String id, DepartmentBean departmentData) {
     List<DepartmentBean.DataBean> dataBeans = new ArrayList<>();
     for (int i = 0; i < departmentData.getData().size(); i++) {
-      if (departmentData.getData().get(i).getDepartment() == id) {
+      if (departmentData.getData().get(i).getId().equalsIgnoreCase(id)) {
         dataBeans.add(departmentData.getData().get(i));
       }
     }
