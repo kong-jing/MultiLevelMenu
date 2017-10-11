@@ -11,21 +11,24 @@ Multi-Level Menu 多级菜单
 
 使用[DialogPlus](http://blog.csdn.net/ss1168805219/article/details/54954427#属性方法)
 
-使用
+### 使用
+
+*初始化该树形多级菜单 第一个参数  ListView, 第二个参数  上下文,第三个参数  数据集, 第四个参数  默认展开层级数 0为不展开,第五个参数  展开的图标,第六个参数  闭合的图标*
 
 ``mDialogAdapter =
             new DialogAdapter(listView, DialogActivity.this, mTreeDatas, 0, R.mipmap.tree_ex,
                 R.mipmap.tree_ec);``
-                
-*初始化该树形多级菜单 第一个参数  ListView, 第二个参数  上下文,第三个参数  数据集, 第四个参数  默认展开层级数 0为不展开,第五个参数  展开的图标,第六个参数  闭合的图标*
-
-``mTreeDatas.add(new Node("id", "parentId",new bean()));``
 
 *添加节点数据*
 
-``listView.setAdapter(mDialogAdapter);//绑定适配器``
+``mTreeDatas.add(new Node("id", "parentId",new bean()));``
 
 *绑定数据*
+
+``listView.setAdapter(mDialogAdapter);//绑定适配器``
+
+### TODO
+添加全选或者非全选
 
 License
 -------
