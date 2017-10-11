@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected List<Node> mDatas = new ArrayList<Node>();
     private TreeListViewAdapter mAdapter;
+    boolean FLAG = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         initDatas();
         mAdapter = new SimpleTreeAdapter(mTree, this,
             mDatas, 0,R.mipmap.tree_ex,R.mipmap.tree_ec);
-        mAdapter.setAllNodesSelected();//设置所有的node被选中
         mTree.setAdapter(mAdapter);
+
         findViewById(R.id.btnMainDialog).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, DialogActivity.class));
@@ -45,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
          */
         findViewById(R.id.btnMainChooseAll).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-
+                if (!FLAG){
+                    mAdapter.setAllNodesSelected(true);
+                    mAdapter.notifyDataSetChanged();
+                    FLAG = true;
+                }else {
+                    mAdapter.setAllNodesSelected(false);
+                    mAdapter.notifyDataSetChanged();
+                    FLAG = false;
+                }
             }
         });
     }

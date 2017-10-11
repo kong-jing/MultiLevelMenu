@@ -309,12 +309,12 @@ public abstract class TreeListViewAdapter extends BaseAdapter
 										View convertView, ViewGroup parent);
 
 	/**
-	 * 选中所有的node
+	 * 是否选中所有的node
 	 */
-	public void setAllNodesSelected(){
+	public void setAllNodesSelected(boolean isSelected){
 		List<Node> nodeList = getAllNodes();
 		for (int i = 0; i < nodeList.size(); i++) {
-			nodeList.get(i).setChecked(true);
+			nodeList.get(i).setChecked(isSelected);
 		}
 	}
 }
