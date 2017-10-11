@@ -11,6 +11,9 @@ import java.util.List;
 import xyz.kongjing.treelist.Node;
 import xyz.kongjing.treelist.TreeListViewAdapter;
 
+/**
+ * TODO 添加默认全选按钮
+ */
 public class MainActivity extends AppCompatActivity {
 
     protected List<Node> mDatas = new ArrayList<Node>();
@@ -29,10 +32,20 @@ public class MainActivity extends AppCompatActivity {
         initDatas();
         mAdapter = new SimpleTreeAdapter(mTree, this,
             mDatas, 0,R.mipmap.tree_ex,R.mipmap.tree_ec);
+        mAdapter.setAllNodesSelected();//设置所有的node被选中
         mTree.setAdapter(mAdapter);
         findViewById(R.id.btnMainDialog).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, DialogActivity.class));
+            }
+        });
+
+        /**
+         * 全选或者全不选
+         */
+        findViewById(R.id.btnMainChooseAll).setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+
             }
         });
     }

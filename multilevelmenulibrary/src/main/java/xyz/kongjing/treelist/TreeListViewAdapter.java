@@ -308,4 +308,13 @@ public abstract class TreeListViewAdapter extends BaseAdapter
 	public abstract View getConvertView(Node node, int position,
 										View convertView, ViewGroup parent);
 
+	/**
+	 * 选中所有的node
+	 */
+	public void setAllNodesSelected(){
+		List<Node> nodeList = getAllNodes();
+		for (int i = 0; i < nodeList.size(); i++) {
+			nodeList.get(i).setChecked(true);
+		}
+	}
 }

@@ -13,6 +13,14 @@
       android:layout_height="wrap_content"
       android:text="Dialog"
       />
+  <Button
+      android:textAllCaps="false"
+      android:id="@+id/btnMainChooseAll"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/chooseall"
+      />
+
   <ListView
       android:id="@+id/lv_tree"
       android:layout_width="match_parent"

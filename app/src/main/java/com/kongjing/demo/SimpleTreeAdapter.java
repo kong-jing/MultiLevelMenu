@@ -15,65 +15,86 @@ import xyz.kongjing.treelist.TreeListViewAdapter;
 /**
  * Created by zhangke on 2017-1-14.
  */
-public class SimpleTreeAdapter extends TreeListViewAdapter
-{
-    public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas, int defaultExpandLevel, int iconExpand, int iconNoExpand) {
-        super(mTree, context, datas, defaultExpandLevel, iconExpand, iconNoExpand);
+public class SimpleTreeAdapter extends TreeListViewAdapter {
+  boolean isSelected = false;
+  public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas,
+      int defaultExpandLevel, int iconExpand, int iconNoExpand) {
+    super(mTree, context, datas, defaultExpandLevel, iconExpand, iconNoExpand);
+  }
+
+  public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas,
+      int defaultExpandLevel) {
+    super(mTree, context, datas, defaultExpandLevel);
+  }
+
+  @Override
+  public View getConvertView(final Node node, int position, View convertView, ViewGroup parent) {
+
+    final ViewHolder viewHolder;
+    if (convertView == null) {
+      convertView = mInflater.inflate(R.layout.list_item, parent, false);
+      viewHolder = new ViewHolder();
+      viewHolder.cb = (CheckBox) convertView.findViewById(R.id.cb_select_tree);
+      viewHolder.label = (TextView) convertView.findViewById(R.id.id_treenode_label);
+      viewHolder.icon = (ImageView) convertView.findViewById(R.id.icon);
+      convertView.setTag(viewHolder);
+    } else {
+      viewHolder = (ViewHolder) convertView.getTag();
+    }
+    viewHolder.cb.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        setChecked(node, viewHolder.cb.isChecked());
+      }
+    });
+    //修改node的状态
+    if (node.isChecked()) {
+      viewHolder.cb.setChecked(true);
+    } else {
+      viewHolder.cb.setChecked(false);
     }
 
-    public SimpleTreeAdapter(ListView mTree, Context context, List<Node> datas,
-                             int defaultExpandLevel) {
-        super(mTree, context, datas, defaultExpandLevel);
+    if (node.getIcon() == -1) {
+      viewHolder.icon.setVisibility(View.INVISIBLE);
+    } else {
+      viewHolder.icon.setVisibility(View.VISIBLE);
+      viewHolder.icon.setImageResource(node.getIcon());
     }
 
-    @Override
-    public View getConvertView(final Node node , int position, View convertView, ViewGroup parent)
-    {
+    viewHolder.label.setText(node.getName());
 
-       final ViewHolder viewHolder ;
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item, parent, false);
-            viewHolder = new ViewHolder();
-            viewHolder.cb = (CheckBox) convertView
-                    .findViewById(R.id.cb_select_tree);
-            viewHolder.label = (TextView) convertView
-                    .findViewById(R.id.id_treenode_label);
-            viewHolder.icon = (ImageView) convertView.findViewById(R.id.icon);
-            convertView.setTag(viewHolder);
+    return convertView;
+  }
 
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-        viewHolder.cb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setChecked(node,viewHolder.cb.isChecked());
-            }
-        });
+  private final class ViewHolder {
+    ImageView icon;
+    CheckBox cb;
+    TextView label;
+  }
 
-        if (node.isChecked()){
-            viewHolder.cb.setChecked(true);
-        }else {
-            viewHolder.cb.setChecked(false);
-        }
+  /**
+   * 全选所有
+   */
+  private void selectAll(boolean isSelected) {
+    this.isSelected = isSelected;
+  }
 
-        if (node.getIcon() == -1) {
-            viewHolder.icon.setVisibility(View.INVISIBLE);
-        } else {
-            viewHolder.icon.setVisibility(View.VISIBLE);
-            viewHolder.icon.setImageResource(node.getIcon());
-        }
+  /**
+   * 修改node 的状态
+   */
+  private void changeNode(ViewHolder viewHolder, Node node, boolean isSelected) {
 
-        viewHolder.label.setText(node.getName());
-
-        return convertView;
+    if (node.isChecked()) {
+      viewHolder.cb.setChecked(isSelected);
+    } else {
+      viewHolder.cb.setChecked(!isSelected);
     }
 
-    private final class ViewHolder
-    {
-        ImageView icon;
-        CheckBox cb;
-        TextView label;
+    if (node.getIcon() == -1) {
+      viewHolder.icon.setVisibility(View.INVISIBLE);
+    } else {
+      viewHolder.icon.setVisibility(View.VISIBLE);
+      viewHolder.icon.setImageResource(node.getIcon());
     }
+  }
 
 }
