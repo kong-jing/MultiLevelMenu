@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //第六个参数  闭合的图标
         initDatas();
         mAdapter = new SimpleTreeAdapter(mTree, this,
-            mDatas, 0,R.mipmap.tree_ex,R.mipmap.tree_ec);
+            mDatas, 0,R.drawable.tree_ex,R.drawable.tree_ec);
         mTree.setAdapter(mAdapter);
 
         findViewById(R.id.btnMainDialog).setOnClickListener(new View.OnClickListener() {

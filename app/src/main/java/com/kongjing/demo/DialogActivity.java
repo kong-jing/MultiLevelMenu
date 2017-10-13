@@ -88,8 +88,8 @@ public class DialogActivity extends AppCompatActivity {
         //初始化dialog上的这个listview的适配器
         //第一个参数  ListView, 第二个参数  上下文,第三个参数  数据集, 第四个参数  默认展开层级数 0为不展开,第五个参数  展开的图标,第六个参数  闭合的图标
         mDialogAdapter =
-            new DialogAdapter(listView, DialogActivity.this, mTreeDatas, 0, R.mipmap.tree_ex,
-                R.mipmap.tree_ec);
+            new DialogAdapter(listView, DialogActivity.this, mTreeDatas, 0, R.drawable.tree_ex,
+                R.drawable.tree_ec);
         listView.setAdapter(mDialogAdapter);//绑定适配器
       }
     });
