@@ -27,8 +27,12 @@ Multi-Level Menu 多级菜单
 
 ``listView.setAdapter(mDialogAdapter);//绑定适配器``
 
+*全选所有节点*
+
+``mAdapter.setAllNodesSelected(true);``
+
 ### TODO
-添加全选或者非全选
+~~添加全选或者非全选~~
 
 License
 -------
