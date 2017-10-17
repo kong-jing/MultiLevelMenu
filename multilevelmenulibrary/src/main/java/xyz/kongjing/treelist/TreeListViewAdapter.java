@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @param
+ * 树形节点目录的适配器抽象类
  */
 public abstract class TreeListViewAdapter extends BaseAdapter
 {

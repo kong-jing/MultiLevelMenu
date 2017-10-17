@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhangke on 2017-1-14.
+ * 适配器管理类
  */
 public class TreeHelper {
 

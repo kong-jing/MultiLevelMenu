@@ -1,7 +1,7 @@
 package xyz.kongjing.treelist;
 
 /**
- * Created by zhangke on 2017-1-14.
+ * 树形节点菜单的点击接口
  */
 public interface OnTreeNodeClickListener {
     void onClick(Node node, int position);

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhangke on 2017-1-14.
+ * 保存实体类的节点
+ * @param <T> id编号
+ * @param <B>  实体类，可自定义
  */
 public class Node<T,B> {
 

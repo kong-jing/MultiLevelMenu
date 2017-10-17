@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhangke on 2017-1-14.
+ * 树形节点目录的抽象类，
+ * Recycleview
  */
 public abstract class TreeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
