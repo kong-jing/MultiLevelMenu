@@ -33,6 +33,8 @@ Multi-Level Menu 多级菜单
 
 ### TODO
 ~~添加全选或者非全选~~
+为每个节点添加计数
+扩展样式
 
 License
 -------
