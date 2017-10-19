@@ -1,4 +1,4 @@
- [![API](https://img.shields.io/badge/API-14%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=14) ![license](https://img.shields.io/badge/license-Apache-000000.svg) [![Build Status](https://www.travis-ci.org/kong-jing/MultiLevelMenu.svg?branch=master)](https://www.travis-ci.org/kong-jing/MultiLevelMenu)
+ [![API](https://img.shields.io/badge/API-14%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=14) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/kong-jing/MultiLevelMenu) [![Build Status](https://www.travis-ci.org/kong-jing/MultiLevelMenu.svg?branch=master)](https://www.travis-ci.org/kong-jing/MultiLevelMenu)
 
 # MultiLevelMenu
 Multi-Level Menu 多级菜单
